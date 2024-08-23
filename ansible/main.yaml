@@ -45,7 +45,7 @@
     - name: Pull Docker image from DockerHub
       community.docker.docker_image: # Downloads the specified Docker image
         name: omarbarakota/dockerized_project # Docker repo
-        tag: v1.0.0                           # Tagname
+        tag: test0.1                           # Tagname
         source: pull
 
     - name: Run Docker container
