@@ -307,8 +307,8 @@ DevOps Project
       │   └── main.yaml      # Ansible playbook defining the automation tasks.
       ├── terraform/             # Directory containing Terraform configuration files for infrastructure as code.
           └── main.tf        # Terraform script that defines the infrastructure resources to be provisioned.
-      ├── .github/workflows  # defining a CI/CD workflow that automates processes like testing, building, and deploying your code.
-          └── actions.yaml
+      ├── .github/workflows  
+          └── actions.yaml  # defining a CI/CD workflow that automates processes like testing, building, and deploying your code.
 ````
 
 ## Future notes if you will edit
