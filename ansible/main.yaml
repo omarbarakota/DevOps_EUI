@@ -1,0 +1,58 @@
+- name: Install Docker and run container
+  hosts: EC2_instance_Sprint_2 
+  become: yes                          # Giving tasks high privileges ex(Sudo)
+  roles:
+    - docker
+  tasks: 
+    - name: Update apt packages
+      apt:
+        update_cache: yes
+
+    - name: Install Docker dependencies
+      apt:
+        name:
+          - apt-transport-https        # Allows the use of repositories accessed via the HTTP Secure protoco
+          - ca-certificates            # Manages the CA (Certificate Authority) certificates.
+          - curl                       # Command-line tool for transferring data with URLs.
+          - software-properties-common # Adds the add-apt-repository command for managing repositories.
+        state: present
+
+    - name: Add Docker GPG key         # The GPG key is used to verify that the packages downloaded are authentic.
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt packages after adding Docker repo
+      apt:  #Updates the package list again to include the packages from the newly added Docker repository.
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull Docker image from DockerHub
+      community.docker.docker_image: # Downloads the specified Docker image
+        name: omarbarakota/dockerized_project # Docker repo
+        tag: v1.0.0                           # Tagname
+        source: pull
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: ansible-container   # Starts a Docker container using the previously pulled image. 
+
+        image: omarbarakota/dockerized_project
+        state: started
+        ports:
+          - "8088:80" #The container's port 80 is mapped to port 8080 on the host machine.
