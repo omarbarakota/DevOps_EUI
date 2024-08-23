@@ -1,4 +1,4 @@
-name: PythonTest & CI/CD
+name: Python Test & CI/CD
 
 on: 
   push:
