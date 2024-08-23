@@ -12,13 +12,15 @@
 
 - [2.2- Run Application](#run-application)
 
-[3- Docker](#3--docker)
+[3- Testing](#3--testing)
 
-[4- GitHub Actions](#4--github-actions)
+[4- Docker](#4--docker)
 
-[5- Terraform](#5--terraform)
+[5- GitHub Actions](#5--github-actions)
 
-[6- Ansible](#6--ansible)
+[6- Terraform](#6--terraform)
+
+[7- Ansible](#7--ansible)
 
 [Best Practices Followed](#best-practices-followed)
 
@@ -176,7 +178,7 @@ gunicorn wsgi
 
       This ensures each functionality is working correctly.
 
-## 3- Docker
+## 4- Docker
 
 ### Why Docker ?
 
@@ -211,7 +213,7 @@ docker push omarbarakota/dockerized_project:latest
 docker pull omarbarakota/dockerized_project:latest
 ```
 
-## 4- Github Actions
+## 5- Github Actions
 
 GitHub Actions automates workflows directly within your GitHub repository. It is used to:
 
@@ -223,7 +225,7 @@ To add any secrets you dont want to show in your file head to `Setting`->`Secret
 
 Note that you can check the action status using the `Badge`
 
-## 5- Terraform
+## 6- Terraform
 
 Terraform is an infrastructure as code (IaC) tool that allows you to define and provision cloud resources in a declarative manner. In your GitHub repo, Terraform is used to:
 
@@ -259,7 +261,7 @@ sudo chmod 400 ./mykey.pem
 ssh -i ./mykey.pem ubuntu@ec2-3-88-11-121.compute-1.amazonaws.com
 ```
 
-## 6- Ansible
+## 7- Ansible
 
 Ansible is an automation tool used for configuration management, application deployment, and task automation. In your GitHub repo, Ansible can be used to:
 
