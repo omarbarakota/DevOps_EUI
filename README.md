@@ -269,7 +269,7 @@ Ansible is an automation tool used for configuration management, application dep
 - Ensure consistent configurations across environments.
 - Simplify complex processes like server provisioning, software installation, and application deployment.
 
-### Run an ansible playbook (EC2 instance):
+### Run an ansible playbook (EC2 instance)
 
 ```bash
     ansible-playbook -i hosts.ini main.yaml
