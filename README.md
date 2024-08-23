@@ -283,6 +283,14 @@ Ansible is an automation tool used for configuration management, application dep
 
 - **Testing**: Integration of automated tests (`pytest`) to verify application functionality, ensuring reliability and consistency.
 
+- **Docker**: Used Docker to create consistent development environments, automate the build and deployment of the application, and simplify testing in isolated environments. Docker images are built and pushed to DockerHub, facilitating easy sharing and deployment of the application.
+
+- **CI/CD**: Leveraged GitHub Actions for continuous integration and continuous deployment. GitHub Actions workflows are defined to automate tasks such as testing, building, and deploying the application. This ensures that code changes are automatically tested and deployed, improving the development workflow.
+
+- **Infrastructure as Code (IaC)**: Employed Terraform for defining and provisioning infrastructure resources in a declarative manner. Terraform configurations are used to automate the creation and management of cloud resources, ensuring infrastructure is reproducible and version-controlled.
+
+- **Configuration Management**: Applied Ansible for configuration management and automation of infrastructure setup. Ansible playbooks are used to automate the configuration of servers and applications, ensuring consistent and repeatable setups across environments.
+
 ## Folder Structure
 
 ````bash
