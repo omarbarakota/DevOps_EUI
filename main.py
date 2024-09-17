@@ -8,7 +8,12 @@ from datetime import datetime
 import requests  # To get any API Request
 import jinja2
 
+#from prometheus_flask_exporter import PrometheusMetrics
+from logging import Logger
 app = Flask(__name__)
+
+#metrics = PrometheusMetrics(app)
+#logger = init_logger()
 
 # List to store tasks (global variable for simplicity)
 # tasks = ["Task1","Task2","Task3",]
@@ -19,7 +24,9 @@ tasks = []
 @app.route('/')
 def index():
     current_time = datetime.now().strftime('%Y-%B-%d \n%I:%M-%p')
+    
     return render_template('index.html', time=current_time, tasks=tasks)
+
 
 
 # Route to handle adding a task
@@ -91,4 +98,4 @@ def generate_password():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080)
