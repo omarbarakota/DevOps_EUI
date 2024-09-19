@@ -21,4 +21,4 @@ EXPOSE 8080
 ENV FLASK_APP=main.py
 
 # run the application
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "wsgi"]
