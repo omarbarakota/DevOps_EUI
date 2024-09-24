@@ -39,8 +39,8 @@ resource "aws_security_group" "my_security_group" {
     Name="My-Security-Group"
   }
 }
-#ami-0e86e20dae9224db8 04a81a99f5ec58529
-resource "aws_instance" "terraform-test" {
+
+resource "aws_instance" "terraform-test1" {
   ami           = "ami-0e86e20dae9224db8" # Ubuntu 24.04 LTS (us-east-1)
   instance_type = "t2.micro"
   key_name = "vockey" 
@@ -50,16 +50,16 @@ resource "aws_instance" "terraform-test" {
     aws_security_group.my_security_group.id,
   ]
   tags = {
-    Name = "terraform-test"
+    Name = "terraform-test1"
   }
 }
 
 # Output the public IP of the EC2 instance
 output "instance_public_ip" {
-  value = aws_instance.terraform-test.public_ip
+  value = aws_instance.terraform-test1.public_ip
 }
 
 # Output the public DNS of the EC2 instance
 output "instance_public_dns" {
-  value = aws_instance.terraform-test.public_dns
+  value = aws_instance.terraform-test1.public_dns
 }
