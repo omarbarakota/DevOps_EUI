@@ -21,4 +21,4 @@ EXPOSE 8080
 ENV FLASK_APP=main.py
 
 # run the application 
-CMD ["gunicorn", "--bind","127.0.0.1:8080", "wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "wsgi"]
