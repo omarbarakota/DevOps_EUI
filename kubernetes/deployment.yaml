@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  #Provide isolation, your can also provide other capabilities or restrictions for each resource
+  namespace: app-ns
+spec:
+  selector:
+    matchLabels:
+      #the key value pair of this selector
+      app: app-deployment
+  template:
+    metadata:
+      labels:
+        #Must match
+        app: app-deployment
+    spec:
+      containers:
+      - name: app-deployment
+        image: omarbarakota/dockerized_project
+        tag:
+        #We must put resource limitations
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
