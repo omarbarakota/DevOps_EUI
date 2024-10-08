@@ -7,18 +7,25 @@ WORKDIR /workspace
 # copy the requirements file into the working dir
 COPY requirments.txt .
 
-# install the dependencies
-RUN pip install --no-cache-dir -r requirments.txt
+ENV PYTHONUNBUFFERED=0
 
+# install the dependencies
+RUN pip install --no-cache-dir -r requirments.txt \
+    #Add group and user (App) adjust permissions
+    && addgroup -S app \
+    && adduser -S app -G app\
+    && chown -R app:app . 
 
 # copy the current directory contents into the container at /workspace
 COPY . .
 
 # make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8000
 
 # define environment variable
 ENV FLASK_APP=main.py
 
+USER app
+
 # run the application 
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "wsgi"]
